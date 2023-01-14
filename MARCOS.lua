@@ -1,7 +1,4 @@
- --[[
-
---]]
-URL     = require("./libs/url")
+ URL     = require("./libs/url")
 JSON    = require("./libs/dkjson")
 serpent = require("libs/serpent")
 json = require('libs/json')
@@ -10,7 +7,7 @@ http  = require("socket.http")
 https   = require("ssl.https")
 SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
 Fx = require './td'
-local MARCOStt =  require('luatele') 
+local MARCOStt =  require('tdlua') 
 local client = MARCOStt()
 local tdf = Fx.xnxx()
 local FileInformation = io.open("./Information.lua","r") 
