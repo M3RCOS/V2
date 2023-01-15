@@ -68,7 +68,7 @@ local MARCOS = io.open("MARCOS", 'w')
 MARCOS:write([[
 cd $(cd $(dirname $0); pwd)
 while(true) do
-lua5.2 MARCOS.lua
+sudo lua5.2 MARCOS.lua
 done
 ]])
 MARCOS:close()
