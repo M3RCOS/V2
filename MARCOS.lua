@@ -72,15 +72,15 @@ sudo lua5.2 MARCOS.lua
 done
 ]])
 MARCOS:close()
-local Run = io.open("Run", 'w')
-Run:write([[
+local play = io.open("play", 'w')
+play([[
 cd $(cd $(dirname $0); pwd)
 while(true) do
 screen -S MARCOS -X kill
 screen -S MARCOS ./MARCOS
 done
 ]])
-Run:close()
+play:close()
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
 os.execute('rm -rf bot.zip ;chmod +x *;./Run')
 end
