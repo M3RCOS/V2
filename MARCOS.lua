@@ -1,16 +1,20 @@
- URL     = require("./libs/url")
+--[[
+
+--]]
+URL     = require("./libs/url")
 JSON    = require("./libs/dkjson")
 serpent = require("libs/serpent")
 json = require('libs/json')
 Redis = require('libs/redis').connect('127.0.0.1', 6379)
 http  = require("socket.http")
 https   = require("ssl.https")
+local Methods = io.open("./luatele.lua","r")
+if Methods then
+URL.tdlua_CallBack()
+end
 SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
-Fx = require './td'
-local MARCOStt =  require('tdlua') 
-local client = MARCOStt()
-local tdf = Fx.xnxx()
-local FileInformation = io.open("./Information.lua","r") 
+luatele = require 'luatele'
+local FileInformation = io.open("./Information.lua","r")
 if not FileInformation then
 if not Redis:get(SshId.."Info:Redis:Token") then
 io.write('\27[1;31mارسل لي توكن البوت الان \nSend Me a Bot Token Now ↡\n\27[0;39;49m')
@@ -30,7 +34,7 @@ end
 else
 print('\27[1;34mلم يتم حفظ التوكن جرب مره اخره \nToken not saved, try again')
 end 
-os.execute('lua5.2 MARCOS.lua')
+os.execute('lua MARCOS.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User") then
 io.write('\27[1;31mارسل معرف المطور الاساسي الان \nDeveloper UserName saved ↡\n\27[0;39;49m')
@@ -41,7 +45,7 @@ Redis:set(SshId.."Info:Redis:User",UserSudo)
 else
 print('\n\27[1;34mلم يتم حفظ معرف المطور الاساسي \nDeveloper UserName not saved\n')
 end 
-os.execute('lua5.2 MARCOS.lua')
+os.execute('lua MARCOS.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User:ID") then
 io.write('\27[1;31mارسل ايدي المطور الاساسي الان \nDeveloper ID saved ↡\n\27[0;39;49m')
@@ -52,7 +56,7 @@ Redis:set(SshId.."Info:Redis:User:ID",UserId)
 else
 print('\n\27[1;34mلم يتم حفظ ايدي المطور الاساسي \nDeveloper ID not saved\n')
 end 
-os.execute('lua5.2 MARCOS.lua')
+os.execute('lua MARCOS.lua')
 end
 local Informationlua = io.open("Information.lua", 'w')
 Informationlua:write([[
@@ -68,19 +72,10 @@ local MARCOS = io.open("MARCOS", 'w')
 MARCOS:write([[
 cd $(cd $(dirname $0); pwd)
 while(true) do
-sudo lua5.2 MARCOS.lua
+lua5.3 MARCOS.lua
 done
 ]])
 MARCOS:close()
-local play = io.open("play", 'w')
-play([[
-cd $(cd $(dirname $0); pwd)
-while(true) do
-screen -S MARCOS -X kill
-screen -S MARCOS ./MARCOS
-done
-]])
-play:close()
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
 os.execute('rm -rf bot.zip ;chmod +x *;./Run')
 end
@@ -12078,7 +12073,7 @@ Bio = ''
 end
 local photo = bot.getUserProfilePhotos(UserId_Info.id)
 if photo.total_count > 0 then
-local DevJabwa = "*✧︙ 𝒅𝒆𝒗 𝒔𝒐𝒖𝒓𝒄𝒆 𝒗𝒂𝒍𝒐𝒓𝒂𝒏𝒕  ♯*\n*✧︙ɴᴀᴍᴇ -› *"..ban.first_name.."\n*✧︙ 𝒊𝒅 -› "..UserId_Info.id.."*\n*✧︙ 𝒃𝒊𝒐 -›*  *"..Bio.." *"
+local DevJabwa = "*✧︙ 𝒅𝒆𝒗 𝒔𝒐𝒖𝒓𝒄𝒆 𝒗𝒂𝒍𝒐𝒓𝒂𝒏𝒕  ♯*\n*✧︙ɴᴀᴍᴇ -› *"..ban.first_name.."\n*✧︙ 𝒊𝒅 -› "..UserId_Info.id.."*\n*✧︙ 𝒃𝒊?? -›*  *"..Bio.." *"
 keyboardd = {} 
 keyboardd.inline_keyboard = {
 {
