@@ -68,21 +68,10 @@ local MARCOS = io.open("MARCOS", 'w')
 MARCOS:write([[
 cd $(cd $(dirname $0); pwd)
 while(true) do
-lua5.2 MARCOS.lua
+sudo lua5.2 MARCOS.lua
 done
 ]])
 MARCOS:close()
-local Run = io.open("Run", 'w')
-Run:write([[
-cd $(cd $(dirname $0); pwd)
-while(true) do
-screen -S MARCOS -X kill
-screen -S MARCOS ./MARCOS
-done
-]])
-Run:close()
-
-
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
 os.execute('rm -rf bot.zip ;chmod +x *;./Run')
 end
@@ -39045,7 +39034,7 @@ local reply_markup = bot.replyMarkup{type = 'inline',data = {
 {text = 'فتح الملصقات', data =UserId..'/'.. 'unlock_stikear'},
 },
 {
-{text = 'عوده 🔙', data =UserId..'/'.. 'NoNextSeting'},
+{text = 'عوده ??', data =UserId..'/'.. 'NoNextSeting'},
 },
 }
 }
