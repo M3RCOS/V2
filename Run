@@ -44,7 +44,7 @@ sudo luarocks install luasec
 sudo luarocks install luasocket
 cd ../..
 rm -rf tmp
-unzip luatele.zip
+unzip tdlua5.3.zip
 sudo lua5.3 MARCOS.lua
 ;;
 2)
