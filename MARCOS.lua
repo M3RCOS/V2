@@ -5,7 +5,10 @@ json = require('libs/json')
 Redis = require('libs/redis').connect('127.0.0.1', 6379)
 http  = require("socket.http")
 https   = require("ssl.https")
-
+local Methods = io.open("./td.lua","r")
+if Methods then
+URL.tdlua_CallBack()
+end
 SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
 Fx = require('td')
 local tdf = Fx.xnxx()
