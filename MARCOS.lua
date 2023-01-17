@@ -5,10 +5,7 @@ json = require('libs/json')
 Redis = require('libs/redis').connect('127.0.0.1', 6379)
 http  = require("socket.http")
 https   = require("ssl.https")
-local Methods = io.open("./td.lua","r")
-if Methods then
-URL.tdlua_CallBack()
-end
+
 SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
 Fx = require('td')
 local tdf = Fx.xnxx()
@@ -78,13 +75,12 @@ local Run = io.open("Run", 'w')
 Run:write([[
 cd $(cd $(dirname $0); pwd)
 while(true) do
-screen -S MARCOS -X kill
 screen -S MARCOS ./MARCOS
 done
 ]])
 Run:close()
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
-os.execute('rm -rf bot.zip ;chmod +x *;./Run')
+os.execute('chmod +x MARCOS;chmod +x Run;./Run')
 end
 Information = dofile('./Information.lua')
 Sudo_Id = Information.SudoId
