@@ -30,7 +30,7 @@ end
 else
 print('\27[1;34mلم يتم حفظ التوكن جرب مره اخره \nToken not saved, try again')
 end 
-os.execute('lua5.3 MARCOS.lua')
+os.execute('lua MARCOS.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User") then
 io.write('\27[1;31mارسل معرف المطور الاساسي الان \nDeveloper UserName saved ↡\n\27[0;39;49m')
@@ -41,7 +41,7 @@ Redis:set(SshId.."Info:Redis:User",UserSudo)
 else
 print('\n\27[1;34mلم يتم حفظ معرف المطور الاساسي \nDeveloper UserName not saved\n')
 end 
-os.execute('lua5.3 MARCOS.lua')
+os.execute('lua MARCOS.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User:ID") then
 io.write('\27[1;31mارسل ايدي المطور الاساسي الان \nDeveloper ID saved ↡\n\27[0;39;49m')
@@ -52,7 +52,7 @@ Redis:set(SshId.."Info:Redis:User:ID",UserId)
 else
 print('\n\27[1;34mلم يتم حفظ ايدي المطور الاساسي \nDeveloper ID not saved\n')
 end 
-os.execute('lua5.3 MARCOS.lua')
+os.execute('lua MARCOS.lua')
 end
 local Informationlua = io.open("Information.lua", 'w')
 Informationlua:write([[
@@ -72,17 +72,8 @@ lua5.3 MARCOS.lua
 done
 ]])
 MARCOS:close()
-local Run = io.open("Run", 'w')
-Run:write([[
-cd $(cd $(dirname $0); pwd)
-while(true) do
-screen -S MARCOS -X kill
-screen -S MARCOS ./MARCOS
-done
-]])
-Run:close()
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
-os.execute('chmod +x MARCOS;chmod +x Run;./Run')
+os.execute('rm -rf bot.zip ;chmod +x *;./MARCOS')
 end
 Information = dofile('./Information.lua')
 Sudo_Id = Information.SudoId
@@ -91,7 +82,7 @@ Token = Information.Token
 UserBot = Information.UserBot
 MARCOS = Token:match("(%d+)")
 os.execute('sudo rm -fr .CallBack-Bot/'..MARCOS)
-bot = Fx.set_config{api_id=29636630,api_hash='7113f88c9568f747ac49c8ed72ed6952',session_name=MARCOS,token=Token}
+bot = Fx.MARCOSbots.set_config{api_id=29636630,api_hash='7113f88c9568f747ac49c8ed72ed6952',session_name=MARCOS,token=Token}
 function coin(coin)
 local Coins = tostring(coin)
 local Coins = Coins:gsub('٠','0')
@@ -28055,7 +28046,7 @@ return bot.sendText(msg.chat_id,msg.id,'*\n ✧ عليك الاشتراك في �
 end
 local Message_Reply = bot.getMessage(msg.chat_id, msg.reply_to_message_id)
 Redis:srem(MARCOS.."mero:zahf"..msg.chat_id, Message_Reply.sender_id.user_id)
-return bot.sendText(msg_chat_id,msg_id," ✧ اهــلا عزيزي\n ✧ تم تنزيل المتهم زاحف بنجاح\n ✧ تم ازالته من قائمه الزواحف🐊😹\nꪤ️")
+return bot.sendText(msg_chat_id,msg_id," ✧ اهــلا عزيزي\n ✧ تم تنزيل المتهم زاحف بنجاح\n ✧ تم ازالته من قائمه الزواحف??😹\nꪤ️")
 elseif text== "رفع زاحف"  and msg.reply_to_message_id and not Redis:get(MARCOS.."amrthshesh"..msg.chat_id) then    
 if ChannelJoinch(msg) == false then
 local reply_markup = bot.replyMarkup{type = 'inline',data = {{{text = Redis:get(MARCOS..'Mero:Chat:Channel:Join:Name'..msg.chat_id), url = 't.me/'..Redis:get(MARCOS..'Mero:Chat:Channel:Join'..msg.chat_id)}, },}}
