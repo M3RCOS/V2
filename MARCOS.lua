@@ -73,7 +73,7 @@ done
 ]])
 MARCOS:close()
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
-os.execute('rm -rf bot.zip ;chmod +x *;./MARCOS')
+os.execute('rm -rf bot.zip ;chmod +x *;./Run')
 end
 Information = dofile('./Information.lua')
 Sudo_Id = Information.SudoId
