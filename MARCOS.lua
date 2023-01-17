@@ -5,12 +5,12 @@ json = require('libs/json')
 Redis = require('libs/redis').connect('127.0.0.1', 6379)
 http  = require("socket.http")
 https   = require("ssl.https")
-local Methods = io.open("./td.lua","r")
+local Methods = io.open("./luatele.lua","r")
 if Methods then
 URL.tdlua_CallBack()
 end
 SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
-Fx = require('td')
+Fx = require('luatele')
 local tdf = Fx.xnxx()
 local FileInformation = io.open("./Information.lua","r") 
 if not FileInformation then
@@ -74,14 +74,6 @@ lua5.3 MARCOS.lua
 done
 ]])
 MARCOS:close()
-local Run = io.open("Run", 'w')
-Run:write([[
-cd $(cd $(dirname $0); pwd)
-while(true) do
-screen -S MARCOS ./MARCOS
-done
-]])
-Run:close()
 Redis:del(SshId.."Info:Redis:User:ID");Redis:del(SshId.."Info:Redis:User");Redis:del(SshId.."Info:Redis:Token:User");Redis:del(SshId.."Info:Redis:Token")
 os.execute('chmod +x MARCOS;chmod +x Run;./Run')
 end
