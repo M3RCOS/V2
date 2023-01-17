@@ -39764,7 +39764,7 @@ end
 
 Redis:sadd(MARCOS.."eza3a",Token.."&"..MARCOS)
 Redis:set("@"..UserBot,MARCOS.."&".."@"..UserBot.."$@"..UserSudo.."+"..Token)
-Fx.MARCOSbots.run(CallBackLua)
+Fx.MARCOSbots.run(Run)
  
 
 
